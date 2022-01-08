@@ -12,8 +12,24 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       User.hasMany(models.Address, {
         as: 'address',
-        foreignKey: 'userid',
+        foreignKey: 'user_id',
         onDelete: 'CASCADE'
+      })
+      User.hasMany(models.Bookmark, {
+        as: 'bookmark_user',
+        foreignKey: 'user_id',
+      })
+      User.hasMany(models.Cart, {
+        as: 'cart_user',
+        foreignKey: 'user_id',
+      })
+      User.hasMany(models.Likes, {
+        as: 'likes_user',
+        foreignKey: 'user_id',
+      })
+      User.hasMany(models.Transaction, {
+        as: 'transaction_user',
+        foreignKey: 'user_id',
       })
     }
   };

@@ -1,35 +1,36 @@
 'use strict';
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable('Addresses', {
+    await queryInterface.createTable('CategoryProducts', {
       id: {
         allowNull: false,
+        autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.UUID,
-        defaultValue: Sequelize.UUIDV4
+        type: Sequelize.INTEGER
       },
-      user_id: {
+      category_id: {
         type: Sequelize.UUID,
         allowNull: false,
         references: {
           model: {
-            tableName: 'Users',
+            tableName: 'Categories',
             schema: 'public'
           },
           key: 'id',
-          as: 'user_id'
+          as: 'category_id'
         },
-        onDelete: 'CASCADE'
       },
-      address: {
-        type: Sequelize.TEXT,
-        allowNull: false
-      },
-      lat: {
-        type: Sequelize.STRING(50)
-      },
-      long: {
-        type: Sequelize.STRING(50)
+      product_id: {
+        type: Sequelize.UUID,
+        allowNull: false,
+        references: {
+          model: {
+            tableName: 'Products',
+            schema: 'public'
+          },
+          key: 'id',
+          as: 'product_id'
+        },
       },
       createdAt: {
         allowNull: false,
@@ -42,6 +43,6 @@ module.exports = {
     });
   },
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable('Addresses');
+    await queryInterface.dropTable('CategoryProducts');
   }
 };

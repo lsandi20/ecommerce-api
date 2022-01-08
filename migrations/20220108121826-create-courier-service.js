@@ -1,35 +1,29 @@
 'use strict';
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable('Addresses', {
+    await queryInterface.createTable('CourierServices', {
       id: {
         allowNull: false,
         primaryKey: true,
         type: Sequelize.UUID,
         defaultValue: Sequelize.UUIDV4
       },
-      user_id: {
+      courier_id: {
         type: Sequelize.UUID,
-        allowNull: false,
         references: {
           model: {
-            tableName: 'Users',
+            tableName: 'Couriers',
             schema: 'public'
           },
           key: 'id',
-          as: 'user_id'
+          as: 'courier_id'
         },
-        onDelete: 'CASCADE'
       },
-      address: {
-        type: Sequelize.TEXT,
-        allowNull: false
+      price: {
+        type: Sequelize.DOUBLE
       },
-      lat: {
-        type: Sequelize.STRING(50)
-      },
-      long: {
-        type: Sequelize.STRING(50)
+      estimation: {
+        type: Sequelize.DOUBLE
       },
       createdAt: {
         allowNull: false,
@@ -42,6 +36,6 @@ module.exports = {
     });
   },
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable('Addresses');
+    await queryInterface.dropTable('CourierServices');
   }
 };
