@@ -52,7 +52,7 @@ module.exports = {
         type: Sequelize.TEXT
       },
       status: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING(30)
       },
       createdAt: {
         allowNull: false,

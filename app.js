@@ -2,6 +2,11 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+require('dotenv').config()
+
+const mongoose = require('mongoose')
+mongoose.connect(process.env.DB_NO_SQL_URL).catch(err => console.error(err))
+
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
