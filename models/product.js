@@ -39,6 +39,7 @@ module.exports = (sequelize, DataTypes) => {
     ratescount: { type: DataTypes.INTEGER }
   }, {
     sequelize,
+    paranoid: true,
     modelName: 'Product',
   });
   return Product;

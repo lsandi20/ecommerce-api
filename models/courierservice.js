@@ -26,6 +26,7 @@ module.exports = (sequelize, DataTypes) => {
     estimation: DataTypes.DOUBLE
   }, {
     sequelize,
+    paranoid: true,
     modelName: 'CourierService',
   });
   return CourierService;

@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       Address.belongsTo(models.User, {
-        as: 'address',
+        as: 'user_address',
         foreignKey: 'user_id',
         onDelete: 'CASCADE'
       })
@@ -34,6 +34,7 @@ module.exports = (sequelize, DataTypes) => {
     long: DataTypes.STRING(50)
   }, {
     sequelize,
+    paranoid: true,
     modelName: 'Address',
   });
   return Address;

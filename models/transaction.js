@@ -38,6 +38,7 @@ module.exports = (sequelize, DataTypes) => {
     status: DataTypes.STRING(30)
   }, {
     sequelize,
+    paranoid: true,
     modelName: 'Transaction',
   });
   return Transaction;

@@ -18,6 +18,7 @@ module.exports = (sequelize, DataTypes) => {
     product_id: DataTypes.UUID
   }, {
     sequelize,
+    paranoid: true,
     modelName: 'TransactionProduct',
   });
   return TransactionProduct;

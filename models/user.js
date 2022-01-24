@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       User.hasMany(models.Address, {
-        as: 'address',
+        as: 'user_address',
         foreignKey: 'user_id',
         onDelete: 'CASCADE'
       })
@@ -51,8 +51,16 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING(20),
       allowNull: false,
     },
+    password: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    token: {
+      type: DataTypes.STRING,
+    },
   }, {
     sequelize,
+    paranoid: true,
     modelName: 'User',
   });
   return User;
